@@ -154,7 +154,7 @@ FILE *readBmp(char const* bmp,char const* args)
         for(u32 i=0;i<bi->H;i++)
         {
             fread(pLineBuf,lineBytesFull,1,fp);
-            memcpy(pPixMap+i*lineBytesReal,pLineBuf,lineBytesReal);
+            memcpy(pPixMap+(bi->H-i-1)*lineBytesReal,pLineBuf,lineBytesReal);
             printf("偏移指针:%p\n",ftell(fp));
         }
     }
@@ -168,7 +168,7 @@ FILE *readBmp(char const* bmp,char const* args)
             for(u32 k=0;k<3;k++)
             {
                 //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
-                printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
+                printf("%02x",*(pPixMap+i*lineBytesReal+3*j+k));
             }
         }
         putchar('\n');
@@ -179,13 +179,7 @@ FILE *readBmp(char const* bmp,char const* args)
     {
         for(u32 j=0;j<bi->W;j++)
         {
-                printf("%02x",*(pPixMap+i*lineBytesReal+3*j));
-        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
-            //for(u32 k=0;k<3;k++)
-            //{
-            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
-            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
-            //}
+            printf("%02x",*(pPixMap+i*lineBytesReal+3*j));
         }
         putchar('\n');
     }
@@ -195,13 +189,7 @@ FILE *readBmp(char const* bmp,char const* args)
     {
         for(u32 j=0;j<bi->W;j++)
         {
-                printf("%02x",*(pPixMap+i*lineBytesReal+3*j+1));
-        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
-            //for(u32 k=0;k<3;k++)
-            //{
-            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
-            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
-            //}
+            printf("%02x",*(pPixMap+i*lineBytesReal+3*j+1));
         }
         putchar('\n');
     }
@@ -211,13 +199,7 @@ FILE *readBmp(char const* bmp,char const* args)
     {
         for(u32 j=0;j<bi->W;j++)
         {
-                printf("%02x",*(pPixMap+i*lineBytesReal+3*j+2));
-        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
-            //for(u32 k=0;k<3;k++)
-            //{
-            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
-            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
-            //}
+            printf("%02x",*(pPixMap+i*lineBytesReal+3*j+2));
         }
         putchar('\n');
     }

@@ -159,6 +159,7 @@ FILE *readBmp(char const* bmp,char const* args)
         }
     }
 
+    printf("全色\n");
     for(u32 i=0;i<bi->H;i++)
     {
         for(u32 j=0;j<bi->W;j++)
@@ -167,9 +168,58 @@ FILE *readBmp(char const* bmp,char const* args)
             for(u32 k=0;k<3;k++)
             {
                 //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
-                printf("*(pPixMap+%d*lineBytesReal+3*%d+%d)=%x\n",i,j,k,*(pPixMap+i*lineBytesReal+3*j+k));
+                printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
             }
         }
+        putchar('\n');
+    }
+
+    printf("蓝色\n");
+    for(u32 i=0;i<bi->H;i++)
+    {
+        for(u32 j=0;j<bi->W;j++)
+        {
+                printf("%02x",*(pPixMap+i*lineBytesReal+3*j));
+        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
+            //for(u32 k=0;k<3;k++)
+            //{
+            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
+            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
+            //}
+        }
+        putchar('\n');
+    }
+
+    printf("绿色\n");
+    for(u32 i=0;i<bi->H;i++)
+    {
+        for(u32 j=0;j<bi->W;j++)
+        {
+                printf("%02x",*(pPixMap+i*lineBytesReal+3*j+1));
+        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
+            //for(u32 k=0;k<3;k++)
+            //{
+            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
+            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
+            //}
+        }
+        putchar('\n');
+    }
+
+    printf("红色\n");
+    for(u32 i=0;i<bi->H;i++)
+    {
+        for(u32 j=0;j<bi->W;j++)
+        {
+                printf("%02x",*(pPixMap+i*lineBytesReal+3*j+2));
+        //    printf("pPixMap+%d*lineBytesReal+%d=%x\n",i,j,*(pPixMap+i*lineBytesReal+j));
+            //for(u32 k=0;k<3;k++)
+            //{
+            //    //printf("pPixMap+%d*lineBytesReal+3*%d+%d=%p\n",i,j,k,pPixMap+i*lineBytesReal+3*j+k);
+            //    printf("%2x",*(pPixMap+i*lineBytesReal+3*j+k));
+            //}
+        }
+        putchar('\n');
     }
 
     return fp;

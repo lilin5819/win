@@ -205,19 +205,19 @@ FILE *readBmp(char const* bmp,char const* args)
     }
 
     PIX_T **pPix;
-    pPix=(PIX_T **)malloc(sizeof(PIX_T **)*bi->W*bi->H);
+    pPix=(PIX_T **)malloc(sizeof(PIX_T**)*bi->W*bi->H);
     for(u32 i=0;i<bi->H;i++)
     {
-        //*(pix+i)=(PIX_T *)(pPixMap+i*lineBytesReal);
-        //pPix[i]=(PIX_T *)(pPixMap+i*lineBytesReal);
-        for(u32 j=0;j<bi->W;j++)
-        {
-            //*(pPix+i)+j=(PIX_T **)(pPixMap+i*lineBytesReal);
-            pPix[i]=(PIX_T *)(pPixMap+i*lineBytesReal);
-            //printf("1 pPix=%p\n",pPix);
-            //printf("2 pPix+i*bi->H+j=%p\n",pPix+i*bi->H+j);
-            //printf("3 *(pPix+i*bi->H+j)=%p\n",*(pPix+i*bi->H+j));
-        }
+        //*(pPix+i)=(PIX_T *)(pPixMap+i*lineBytesReal);
+        pPix[i]=(PIX_T *)(pPixMap+i*lineBytesReal);
+        //for(u32 j=0;j<bi->W;j++)
+        //{
+        //    *(pPix+i)+j=(PIX_T **)(pPixMap+i*lineBytesReal);
+        //    //pPix[i]=(PIX_T *)(pPixMap+i*lineBytesReal);
+        //    //printf("1 pix=%p\n",pix);
+        //    //printf("2 pix+i*bi->H+j=%p\n",pix+i*bi->H+j);
+        //    //printf("3 *(pix+i*bi->H+j)=%p\n",*(pix+i*bi->H+j));
+        //}
     }
 
     putchar('\n');
@@ -225,20 +225,14 @@ FILE *readBmp(char const* bmp,char const* args)
     {
         for(u32 j=0;j<bi->W;j++)
         {
+            printf("%02x",pPix[i][j].b);
+            printf("%02x",pPix[i][j].g);
             printf("%02x",pPix[i][j].r);
         }
         putchar('\n');
     }
 
-    printf("红色\n");
-    for(u32 i=0;i<bi->H;i++)
-    {
-        for(u32 j=0;j<bi->W;j++)
-        {
-            printf("%02x",*(pPixMap+i*lineBytesReal+3*j+2));
-        }
-        putchar('\n');
-    }
+
     return fp;
 }
 
